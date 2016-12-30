@@ -635,6 +635,14 @@ define Device/ARV7519RW22
 endef
 TARGET_DEVICES += ARV7519RW22
 
+# Bintec RS353aw
+define Device/RS353aw
+  DEVICE_PROFILE := RS353aw
+  DEVICE_TITLE := Bintec RS353aw
+  IMAGE_SIZE := 31232k
+  DEVICE_PACKAGES := kmod-usb-dwc2 kmod-ath9k wpad-mini kmod-i2c-gpio kmod-swconfig wpad-mini kmod-ledtrig-usbdev
+endef
+TARGET_DEVICES += RS353aw
 
 DEVICE_BTHOMEHUBV5A_UBIFS_OPTS:="-m 2048 -e 126KiB -c 4096"
 DEVICE_BTHOMEHUBV5A_UBI_OPTS:="-m 2048 -p 128KiB -s 512"
