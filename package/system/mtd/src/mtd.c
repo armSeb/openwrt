@@ -780,6 +780,7 @@ int main (int argc, char **argv)
 		CMD_UNLOCK,
 		CMD_JFFS2WRITE,
 		CMD_FIXTRX,
+		CMD_FIXBOSS,
 		CMD_FIXSEAMA,
 		CMD_VERIFY,
 		CMD_DUMP,
@@ -892,6 +893,9 @@ int main (int argc, char **argv)
 	} else if (((strcmp(argv[0], "fixtrx") == 0) && (argc == 2)) && mtd_fixtrx) {
 		cmd = CMD_FIXTRX;
 		device = argv[1];
+	} else if (((strcmp(argv[0], "fixboss") == 0) && (argc == 2)) && mtd_fixboss) {
+		cmd = CMD_FIXBOSS;
+		device = argv[1];
 	} else if (((strcmp(argv[0], "fixseama") == 0) && (argc == 2)) && mtd_fixseama) {
 		cmd = CMD_FIXSEAMA;
 		device = argv[1];
@@ -980,6 +984,11 @@ int main (int argc, char **argv)
 		case CMD_FIXTRX:
 			if (mtd_fixtrx) {
 				mtd_fixtrx(device, offset, data_size);
+			}
+			break;
+		case CMD_FIXBOSS:
+			if (mtd_fixboss) {
+				mtd_fixboss(device, offset, data_size);
 			}
 			break;
 		case CMD_RESETBC:

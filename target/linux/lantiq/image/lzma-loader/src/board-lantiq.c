@@ -30,4 +30,10 @@ void board_putc(char c)
 
 void board_init(void)
 {
+	/* Make sure the watchdog is disabled
+	   by writing the magic words	 */
+	WRITEREG(0xbf8803f0, 0x00be0000);
+	WRITEREG(0xbf8803f0, 0x00dc0000);
+
+//	WRITEREG(0xbe105360, 0x000111A7);
 }

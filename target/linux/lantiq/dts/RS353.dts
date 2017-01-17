@@ -28,6 +28,7 @@
 				reg = <0 0x0 0x2000000>;
 				#address-cells = <1>;
 				#size-cells = <1>;
+				lantiq,ebu_swap_check;
 
 				partitions {
 					compatible = "fixed-partitions";
@@ -58,24 +59,9 @@
 						read-only;
 					};
 
-					partition@0xc0000 {
-						label = "uboot";
-						reg = <0xc0000 0x40000>;
-					};
-
 					partition@0x100000 {
-						label = "uboot-env";
-						reg = <0x100000 0x20000>;
-					};
-					
-					partition@0x120000 {
 						label = "firmware";
-						reg = <0x120000 0x1EC0000>;
-					};
-
-					partition@0x1FE0000 {
-						label = "GPHY_CPR";
-						reg = <0x1FE0000 0x20000>;
+						reg = <0xc0000 0x1F40000>;
 					};
 				};
 			};
@@ -192,7 +178,7 @@
 		#address-cells = <1>;
 		#size-cells = <0>;
 		reg = <0>;
-		mac-address = [ 00 11 22 33 44 55 ];
+		mtd-mac-address = <&boardconfig 0x428>;
 		lantiq,switch;
 
 		ethernet@4 {
